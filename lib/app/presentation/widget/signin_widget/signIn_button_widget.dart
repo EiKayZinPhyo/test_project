@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -53,6 +55,7 @@ class SignInAuthButtonWidget extends ConsumerWidget {
         error: (error, stackTrace) {
           if (error is DioException) {
             if (error.response?.statusCode == 404) {
+              log("error ${error.response?.statusCode}");
               CustomDialog.showErrorDialog(
                 context,
                 message:
@@ -81,72 +84,19 @@ class SignInAuthButtonWidget extends ConsumerWidget {
     });
 
 
-    // ref.listen(authSignInNotifierProvider, (previous, next) {
-    //   next.whenOrNull(
-    //     data: (AuthInfoModel? data) {
-    //       if (data != null) {
-    //         if (emailText != null && passwordText != null) {
-    //           if (data.personFormInformation?.register ?? false) {
-    //             context.pushReplacementNamed(RouteNames.bottomNavigationScreen);
-    //           } else {
-    //             context.pushReplacementNamed(
-    //               RouteNames.googleFormScreen,
-    //               extra: data,
-    //             );
-    //           }
-    //           ref
-    //               .read(signInEmailTextNotifierProvider.notifier)
-    //               .changeValue(null);
-    //           ref
-    //               .read(signInPasswordTextNotifierProvider.notifier)
-    //               .changeValue(null);
-    //           emailController.clear();
-    //           passwordController.clear();
-    //         }
-    //       }
-    //     },
-    //     error: (error, stackTrace) {
-    //       if (error is DioException) {
-    //         if (error.response?.statusCode == 404) {
-    //           CustomDialog.showErrorDialog(
-    //             context,
-    //             message:
-    //             "It looks like there is no account associated with the credentials you entered. Please double-check and try again.",
-    //             title: "No Account",
-    //           );
-    //           return;
-    //         } else if (error.response?.statusCode == 401) {
-    //           CustomDialog.showErrorDialog(
-    //             context,
-    //             message:
-    //             "We couldn’t verify your email or password. Please try again.",
-    //             title: "Invalid Credential",
-    //           );
-    //           return;
-    //         }
-    //       }
-    //       CustomDialog.showErrorDialog(
-    //         context,
-    //         message:
-    //         "Please try again in a moment. If this keeps happening, check your connection.",
-    //         title: "Something went wrong",
-    //       );
-    //     },
-    //   );
-    // });
 
     return CustomButton(
       onPressed: () {
         if ((emailText != null && passwordText != null) &&
             !authSignInResult.isLoading) {
           ref
-              .read(authSignInNotifierProvider.notifier)
+              .refresh(authSignInNotifierProvider.notifier)
               .signIn(SignInPayLoad(email: emailText, password: passwordText));
         }
       },
       disable: (emailText != null && passwordText != null) ? false : true,
-      color: Theme.of(context).colorScheme.primary,
-      textColor: Theme.of(context).colorScheme.secondaryContainer,
+      color: Colors.purple,
+      textColor: Colors.white,
       text: '',
       child:
       authSignInResult.isLoading
@@ -155,13 +105,14 @@ class SignInAuthButtonWidget extends ConsumerWidget {
         height: 20,
         child: CircularProgressIndicator.adaptive(
           strokeWidth: 1,
-          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          backgroundColor: Colors.white,
         ),
       )
           :
       CustomText(
         text: "Sign in",
-        color: Theme.of(context).colorScheme.tertiary,
+        color: Colors.white,
+        fontSize: 13,
         fontWeight: FontWeight.w500,
       ),
     );

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_project/app/data/model/auth_model/auth_info_model.dart';
 import 'package:test_project/app/data/model/auth_model/sign_in_payload.dart';
@@ -14,6 +15,7 @@ class AuthSignInNotifier extends AutoDisposeAsyncNotifier<AuthInfoModel?> {
           .signIn(signInPayLoad: signInPayLoad);
       if (authInfoModel.personFormInformation?.register == true) {
       }
+      log("AuthInfoModel $authInfoModel");
       return authInfoModel;
     });
   }

@@ -33,7 +33,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color effectiveBorderColor = borderColor ?? Colors.transparent;
+    final Color effectiveBorderColor = borderColor ?? Colors.purple;
 
     return SizedBox(
       child: TextFormField(
@@ -44,25 +44,25 @@ class CustomTextField extends StatelessWidget {
         focusNode: focusNode,
         maxLines: maxLines ?? 1,
         style: TextStyle(
-          color: Theme.of(context).colorScheme.onTertiary,
+          color: Colors.black,
           fontSize: 12,
         ),
         decoration: InputDecoration(
           filled: true,
 
-          fillColor: textFieldColor ?? Theme.of(context).colorScheme.surface,
+          fillColor: textFieldColor ?? Colors.black,
 
           hintText: hintText,
 
           hintStyle: TextStyle(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Colors.black,
             fontSize: 12,
           ),
           prefixIcon: prefixIcon != null
               ? Icon(
             prefixIcon,
             size: 16,
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Colors.purple,
           )
               : null,
           suffixIcon: isPassword
@@ -70,7 +70,7 @@ class CustomTextField extends StatelessWidget {
             iconSize: 16,
             icon: Icon(
               passwordShow ? Icons.visibility : Icons.visibility_off,
-              color: Theme.of(context).colorScheme.primary,
+              color: Colors.purple,
             ),
             onPressed: passwordCallBack,
           )
@@ -88,7 +88,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(
               color:
               borderColor ??
-                  Theme.of(context).colorScheme.primary,
+                 Colors.purple,
               width: 1.2,
             ),
           ),

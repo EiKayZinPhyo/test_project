@@ -63,7 +63,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           CustomCurve(

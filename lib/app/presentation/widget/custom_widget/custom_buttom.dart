@@ -37,8 +37,8 @@ class CustomButton extends StatelessWidget {
       width: width ?? double.infinity,
       decoration: BoxDecoration(
         color: disable ?? false
-            ? Theme.of(context).colorScheme.onSecondary.withValues(alpha: 0.4)
-            : color ?? Theme.of(context).colorScheme.primary,
+            ? Colors.purple.withValues(alpha: 0.4)
+            : color ?? Colors.purple,
         borderRadius: borderRadius ?? BorderRadius.circular(4),
         border: borderColor != null
             ? Border.all(color: borderColor!, width: 1.2)
@@ -48,9 +48,7 @@ class CustomButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           onTap: disable ?? false ? null : onPressed,
-          splashColor: Theme.of(
-            context,
-          ).colorScheme.secondaryContainer.withValues(alpha: 0.2),
+          splashColor: Colors.purple.withValues(alpha: 0.2),
           borderRadius: BorderRadius.circular(4),
 
           child: Center(
@@ -59,7 +57,7 @@ class CustomButton extends StatelessWidget {
                 Text(
                   text!,
                   style: TextStyle(
-                    color: textColor ?? Theme.of(context).colorScheme.tertiary,
+                    color: textColor ?? Colors.white,
                     fontSize: 12.sp,
                     fontWeight: FontWeight.w600,
                   ),

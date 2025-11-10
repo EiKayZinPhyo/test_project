@@ -40,19 +40,13 @@ class SignInScreenWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  const Spacer(),
-                  SizedBox(height: 50),
-                  Image.asset(
-                    "assets/images/logo.png",
-                    height: 0.12 * MediaQuery.of(context).size.height,
-                  ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 200),
                   CustomText(
-                    text: "Sign in to your serenity account",
+                    text: "Sign in to your account",
                     textAlign: TextAlign.center,
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
-                    color: Theme.of(context).colorScheme.onPrimary,
+                    color: Colors.black,
                   ),
 
                   const SizedBox(height: 40),
@@ -67,7 +61,7 @@ class SignInScreenWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       CustomTextField(
-                        hintText: "enter_email",
+                        hintText: "Enter Email",
                         focusNode: emailFocusNode,
                         passwordShow: true,
                         controller: emailController,
@@ -112,61 +106,12 @@ class SignInScreenWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                        },
-                        child: CustomText(
-                          text: "forget_password",
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          textAlign: TextAlign.right,
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 40),
                   SignInAuthButtonWidget(
                     emailController: emailController,
                     passwordController: passwordController,
                   ),
                   SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(width: 2),
-                      Expanded(
-                        child: Divider(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onTertiary.withValues(alpha: 0.2),
-                          thickness: 0.8,
-                          endIndent: 10,
-                        ),
-                      ),
-                      Text(
-                        'Or Sign In With',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Expanded(
-                        child: Divider(
-                          color: Theme.of(
-                            context,
-                          ).colorScheme.onTertiary.withValues(alpha: 0.3),
-                          thickness: 1,
-                          indent: 10,
-                        ),
-                      ),
-                      SizedBox(width: 2),
-                    ],
-                  ),
-                  SizedBox(height: 30),
                 ],
               ),
             ),
