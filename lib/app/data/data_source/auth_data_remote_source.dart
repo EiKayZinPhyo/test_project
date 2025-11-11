@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:test_project/app/data/api/auth_api.dart';
 import 'package:test_project/app/data/model/auth_model/auth_info_model.dart';
 import 'package:test_project/app/data/model/auth_model/sign_in_payload.dart';
@@ -17,9 +16,7 @@ class AuthDataRemoteSourceImpl extends AuthDataRemoteSource{
   Future<AuthInfoModel> signIn(SignInPayLoad signInPayLoad) async{
     try {
       final responseData = await authApi.signIn(signInPayLoad);
-      log("responseData $responseData $signInPayLoad");
       if (responseData.response.statusCode == 200) {
-        log("responseData $responseData");
         return responseData.data;
       } else {
         throw Exception();
